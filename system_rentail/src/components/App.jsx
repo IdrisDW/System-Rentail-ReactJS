@@ -1,4 +1,4 @@
-import '../styles/app.sass';
+import '../styles/app.sass'
 import { Header } from './Header'
 import Catalog from './Catalog';
 
