@@ -4,7 +4,7 @@ import "../styles/personaldata.sass";
 import { ButtonEdit } from "./Buttons";
 
 class PersonalData extends Component {
-  constructor(props) {
+  constructor(props) { // so we can obtain the values
     super(props);
     this.state = {
       nameP: "",
@@ -33,7 +33,7 @@ class PersonalData extends Component {
 
   //   onChange = e => this.setState ({ [e.target.name] : e.target.value}); // so we get to change the state without doing it 1 by 1 ...
 
-  handleInputChange(e) {
+  handleInputChange(e) { // so we can actually type and change the state without having to do it manually
     const target = e.target;
     const value = target.value;
     const name = target.name;
