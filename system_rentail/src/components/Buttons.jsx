@@ -48,3 +48,9 @@ export function ButtonAcept(props) {
         <button className="btn-acept-desktop">Aceptar</button>
     )
 }
+
+export function ButtonEdit(props) {
+    return (
+        <button className="btn-edit-desktop">Editar</button>
+    )
+}
