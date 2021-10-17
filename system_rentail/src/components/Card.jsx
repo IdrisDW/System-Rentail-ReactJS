@@ -12,6 +12,7 @@ export function Card(props) {
             <div className="card-content">
             <h2 className="card-title">{props.publication.title}</h2>
             <h4 className="card-name">{props.publication.product[0].name}</h4>
+            <h4 className="card-name">{props.publication.location}</h4>
             <h3 className="card-price">$ {props.publication.prices[0]}</h3>
             <h4 className="card-period">por un periodo de {props.publication.periods[0]} días</h4>
             </div>
