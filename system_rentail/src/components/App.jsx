@@ -7,7 +7,7 @@ import  PersonalData  from './PersonalData';
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
        {/* <Catalog /> */}
       <PersonalData/>
     </div>
