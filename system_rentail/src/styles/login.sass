@@ -1,0 +1,21 @@
+@import './variables.sass'
+
+
+.container 
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas: "image info";
+
+.image
+    grid-area: image;
+    background-color: $c2;
+
+.info 
+    grid-area: info;
+    background-color: $c4;
+
+.image-icon
+    max-width: 40%;  
