@@ -1,15 +1,43 @@
 .toolsCatalog
     display: flex
     flex-direction: column
+    padding: 1%
+
     .bar-search
+        width: 100%
+        display: flex
+        align-items: center
+
+        .breadcrumbs
+            width: 50%
+            display: flex
+            align-items: center
+            justify-content: flex-start
+            gap: 1%
+
+            a
+                text-transform: lowercase
+                font-size: 0.9em
+                text-decoration: none
+                color: #808080
+
+                &::first-letter
+                    text-transform: uppercase
+
+                &:hover
+                    text-decoration: underline
+                    font-size: 1em
+                    color: #464545
+            p
+                color: #808080
+
         form
+            width: 50%
             display: flex
             justify-content: flex-end
             align-items: center
-            margin-right: 1%
             input
-                width: 35%
-                text-align: center
+                width: 30%
                 margin-right: 0.5%
 
     .filters
@@ -18,10 +46,9 @@
         display: flex
         justify-content: center
         align-items: center
-        gap: 1%
+        gap: 3%
 
         form
-            margin-right: 1%
             width: 50%
             display: flex
             justify-content: flex-end
@@ -39,4 +66,5 @@
             width: 35%
 
             input
+                margin-right: 2%
                 width: 20%

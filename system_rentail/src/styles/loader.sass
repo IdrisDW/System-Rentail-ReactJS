@@ -1,0 +1,27 @@
+.loading
+    padding: 1%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    h4
+        color: #153E90
+
+    .preloader
+        width: 150px
+        height: 150px
+        border: 10px solid #eee
+        border-top: 10px solid #153E90
+        border-radius: 50%
+        animation-name: girar
+        animation-duration: 2s
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+
+    @keyframes girar
+        from
+            transform: rotate(0deg)
+
+        to
+            transform: rotate(360deg)
