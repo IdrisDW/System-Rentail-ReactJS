@@ -47,9 +47,9 @@ export default function ToolsCatalog(props) {
                     // select_sectors.value = ""
                     // select_categories.value = ""
                     }}>
-                    <input id="search" type="text" />
+                    <input id="search" placeholder="Search...." type="text" />
                     <ButtonSearch key="search"/>
-                </form>
+                </form> 
             </div>
             <div key="filters" className="filters">
                 <form action="submit" method="get" onSubmit={(e) => {
@@ -61,7 +61,7 @@ export default function ToolsCatalog(props) {
                     <label>Sector:</label>
                     <select name="sectors" id="1">
                         <option value="">Mostrar Todos</option>
-                        {optionsSectors.map((s) => <option value={s._id}>{s.name}</option> )}
+                        {optionsSectors.map((s) => <option label={s.name} value={s._id}></option> )}
                     </select>
                     <ButtonFilter key="sectors"/>
                 </form>
