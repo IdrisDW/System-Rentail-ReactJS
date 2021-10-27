@@ -30,9 +30,10 @@ export default function BasicSelect(props) {
 
   return (
     <Box sx={{ minWidth: 120, padding: 2 }}>
-      <FormControl fullWidth sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-        <InputLabel id="demo-simple-select-label">{props.title}</InputLabel>
+      <FormControl fullWidth sx={{ width: '100%', flexDirection: 'row', flexWrap: 'wrap' }}>
+        <InputLabel className="label-basic" id="demo-simple-select-label">{props.title}</InputLabel>
         <Select
+          className="select-basic"
           style={{width:'70%'}}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -43,7 +44,7 @@ export default function BasicSelect(props) {
           <MenuItem value="Mostrar Todos">Mostrar Todos</MenuItem>
           {options.map((o) => <MenuItem value={o._id}>{o.name}</MenuItem> )}
         </Select>
-        <Button onClick={(e) => {
+        <Button className="btn-select"onClick={(e) => {
           if (selectOption === 'Mostrar Todos'){
             props.searchPublications('https://income-system.herokuapp.com/publications')
           } else{
