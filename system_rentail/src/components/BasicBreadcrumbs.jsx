@@ -12,10 +12,11 @@ export default function BasicBreadcrumbs(props) {
   return (
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs style={{ padding:'5px' }} aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
+        <Link style={{ fontSize: '0.9em' }} underline="hover" color="inherit" href="#">
           Home
         </Link>
         <Link
+          style={{ fontSize: '0.9em' }}
           underline="hover"
           color="inherit"
           href="/getting-started/installation/"

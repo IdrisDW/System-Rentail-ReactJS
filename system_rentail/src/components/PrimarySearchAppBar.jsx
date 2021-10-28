@@ -200,7 +200,7 @@ export default function PrimarySearchAppBar(props) {
               name="search"
             />
           </Search>
-          <Button name="search" onClick={handleClick} className="search-btn" variant="contained">Buscar</Button>
+          <Button className="btn-search"name="search" onClick={handleClick} className="search-btn" variant="contained">Buscar</Button>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">

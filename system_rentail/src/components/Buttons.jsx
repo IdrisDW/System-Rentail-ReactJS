@@ -4,7 +4,7 @@ import '../styles/buttons.sass';
 
 export function ButtonRent() {
     return (
-        <button className="btn-rent-desktop">Rentalo Ahora</button>
+        <button className="btn-rent-desktop">Detalles</button>
     )
 }
 

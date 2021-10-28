@@ -3,14 +3,24 @@ import BasicBreadcrumbs from './BasicBreadcrumbs'
 import ToolsCatalog from './ToolsCatalog'
 import PrimarySearchAppBar from './PrimarySearchAppBar'
 import SimpleBackdrop from './SimpleBackdrop'
+import DetailsPublication from './DetailsPublication';
 import '../styles/catalog.sass'
 import { Card } from './Card'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 export default function Catalog(props) {
 
+    const [ catalogActive, setCatalogActive ] = useState(true);
+    const [ detailsActive, setDetailsActive ] = useState(false);
     const [ publications, setPublications ] = useState([]);
-    const [ loading, setLoading ] = useState(true);
-    const [ notResult, setNotResult ] = useState(false);
+    const [ publication, setPublication] = useState({})
+    const [ loading, setLoading ] = useState(null);
+    const [ notResult, setNotResult ] = useState(null);
     const [ search, setSearch ] = useState(null)
 
     useEffect(() => {
@@ -21,6 +31,7 @@ export default function Catalog(props) {
             if (jsonRequest.length > 0) {
                 setLoading(false)
                 setPublications(jsonRequest)
+                setNotResult(false)
             } else {
                 setNotResult(true)
             }
@@ -30,42 +41,116 @@ export default function Catalog(props) {
 
     },[])
 
-    const searchPublications = async (url_serach, search) => {
+    const searchPublications = async (url_search, search) => {
         setLoading(true)
-        const request = await fetch(url_serach)
+        const request = await fetch(url_search)
         if (request.status === 200) {
             const jsonRequest = await request.json()
             if (jsonRequest.length > 0) {
                 setLoading(false)
                 setSearch(search)
                 setPublications(jsonRequest)
+                setNotResult(false)
+                setCatalogActive(true)
+                setDetailsActive(false)
             } else {
                 setSearch(null)
                 setLoading(false)
                 setPublications([])
                 setNotResult(true)
+                setCatalogActive(true)
+                setDetailsActive(false)
             }
         } else {
             setSearch(null)
             setLoading(false)
             setPublications([])
             setNotResult(true)
+            setCatalogActive(true)
+            setDetailsActive(false)
+        }
+    }
+
+    const getPublication = async (url_search, search) => {
+        setLoading(true)
+        const request = await fetch(url_search)
+        if (request.status === 200) {
+            const jsonRequest = await request.json()
+            if (jsonRequest.length > 0) {
+                setLoading(false)
+                setSearch(search)
+                setPublication(jsonRequest)
+                setNotResult(false)
+                setCatalogActive(false)
+                setDetailsActive(true)
+            } else {
+                setSearch(null)
+                setLoading(false)
+                setPublications([])
+                setNotResult(true)
+                setCatalogActive(true)
+                setDetailsActive(false)
+            }
+        } else {
+            setSearch(null)
+            setLoading(false)
+            setPublications([])
+            setNotResult(true)
+            setCatalogActive(true)
+            setDetailsActive(false)
+        }
+    }
+
+    const filterPublications = async (url_search, search) => {
+        setLoading(true)
+        const request = await fetch(url_search)
+        if (request.status === 200) {
+            const jsonRequest = await request.json()
+            if (jsonRequest.length > 0) {
+                setLoading(false)
+                setSearch(search)
+                setPublications(jsonRequest)
+                setNotResult(false)
+                setCatalogActive(true)
+                setDetailsActive(false)
+            } else {
+                setSearch(null)
+                setLoading(false)
+                setPublications([])
+                setNotResult(true)
+                setCatalogActive(true)
+                setDetailsActive(false)
+            }
+        } else {
+            setSearch(null)
+            setLoading(false)
+            setPublications([])
+            setNotResult(true)
+            setCatalogActive(true)
+            setDetailsActive(false)
         }
     }
 
     return (
         <main className="body-catalog">
             <div className="catalog">
+                <Router>
                 {loading ? <SimpleBackdrop loading={true} />: null}
                 <PrimarySearchAppBar searchPublications={searchPublications}/>
                 <BasicBreadcrumbs search={search} />
-                <ToolsCatalog searchPublications={searchPublications} />
+                <ToolsCatalog filterPublications={filterPublications} />
                 <ul>
                     {publications.map(publication => {
-                        return <li key={publication._id}><Card publication={publication}/></li>
+                        if (catalogActive) {
+                            return <li key={publication._id}><Card getPublication={getPublication} publication={publication}/></li>
+                        }
                     })}
                 </ul>
+                <Route path='/hola'>
+                    {detailsActive ? <DetailsPublication publication={publication[0 ]}/> : null}
+                </Route>
                 {notResult ? <h1>Sin Resultados</h1> :null}
+                </Router>
             </div>
         </main>
     )

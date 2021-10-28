@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
-export default function BasicSelect(props) {
+export default function BasicSelectD(props) {
   const [options, setOptions] = React.useState([]);
   const [selectSearch, setSelectSearch] = React.useState(null);
   const [selectOption, setSelectOption] = React.useState(null);
@@ -29,7 +29,7 @@ export default function BasicSelect(props) {
 
 
   return (
-    <Box sx={{ minWidth: 120, padding: 2 }}>
+    <Box className="basic-select-D" sx={{ minWidth: 120, padding: 2 }}>
       <FormControl fullWidth sx={{ width: '100%', flexDirection: 'row', flexWrap: 'wrap' }}>
         <InputLabel className="label-basic" id="demo-simple-select-label">{props.title}</InputLabel>
         <Select
@@ -46,10 +46,9 @@ export default function BasicSelect(props) {
         </Select>
         <Button className="btn-select"onClick={(e) => {
           if (selectOption === 'Mostrar Todos'){
-            props.searchPublications('https://income-system.herokuapp.com/publications')
+            props.filterPublications('https://income-system.herokuapp.com/publications')
           } else{
-            console.log(selectSearch);
-            props.searchPublications('https://income-system.herokuapp.com/publications?'+ props.search + '=' + selectOption, selectSearch)
+            props.filterPublications('https://income-system.herokuapp.com/publications?'+ props.search + '=' + selectOption, selectSearch)
           }
         }} style={{width:'30%', backgroundColor: '#153E90'}} variant="contained"
         id="demo-simple-select"

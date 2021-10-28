@@ -4,8 +4,15 @@ import { ButtonRent } from './Buttons'
  
 export function Card(props) {
 
+    const handleClick = (event) => {
+        event.preventDefault();
+        if (event.target.localName === 'img' || event.target.localName === 'button' || event.target.localName === 'a'){
+            props.getPublication('https://income-system.herokuapp.com/publications/' + props.publication._id, props.publication.product[0].name)
+        }
+    }
+
     return (
-    <div className="card">
+    <div className="card" onClick={handleClick}>
         <div className="box-image">
             <img src={props.publication.product[0].image} alt="Product" />
         </div>
