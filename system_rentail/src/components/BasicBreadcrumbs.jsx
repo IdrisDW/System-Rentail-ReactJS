@@ -2,6 +2,9 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import {
+  Link as LinkReactRouter
+} from "react-router-dom";
 
 function handleClick(event) {
   event.preventDefault();
@@ -11,8 +14,9 @@ function handleClick(event) {
 export default function BasicBreadcrumbs(props) {
   return (
     <div role="presentation" onClick={handleClick}>
-      <Breadcrumbs style={{ padding:'5px' }} aria-label="breadcrumb">
-        <Link style={{ fontSize: '0.9em' }} underline="hover" color="inherit" href="#">
+      <Breadcrumbs style={{ backgroundColor:'#eef4f7' ,  padding:'5px' }} aria-label="breadcrumb">
+        <Link
+        style={{ fontSize: '0.9em' }} underline="hover" color="inherit" href="/catalog">
           Home
         </Link>
         <Link

@@ -41,10 +41,10 @@ export default function BasicSelectM(props) {
       setOpen(false);
     } else {
         if (selectOption === 'Mostrar Todos'){
-            props.filterPublications('https://income-system.herokuapp.com/publications')
+            props.searchPublications('https://income-system.herokuapp.com/publications')
             setOpen(false);
           } else{
-            props.filterPublications('https://income-system.herokuapp.com/publications?'+ props.search + '=' + selectOption, selectSearch)
+            props.searchPublications('https://income-system.herokuapp.com/publications?'+ props.search + '=' + selectOption, selectSearch)
             setOpen(false);
           }
     }

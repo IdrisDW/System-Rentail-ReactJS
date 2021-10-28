@@ -91,7 +91,7 @@ export default function PrimarySearchAppBar(props) {
 
   const handleClick = (event) => {
     const urlNew = 'https://income-system.herokuapp.com/publications?title=' + searchText
-    props.searchPublications(urlNew);
+    props.searchPublications(urlNew, 'Busqueda: ' + searchText);
   }
 
   const menuId = 'primary-search-account-menu';
