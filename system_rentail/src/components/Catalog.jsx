@@ -6,12 +6,6 @@ import SimpleBackdrop from './SimpleBackdrop'
 import DetailsPublication from './DetailsPublication';
 import '../styles/catalog.sass'
 import { Card } from './Card'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 export default function Catalog(props) {
 
@@ -134,7 +128,6 @@ export default function Catalog(props) {
     return (
         <main className="body-catalog">
             <div className="catalog">
-                <Router>
                 {loading ? <SimpleBackdrop loading={true} />: null}
                 <PrimarySearchAppBar searchPublications={searchPublications}/>
                 <BasicBreadcrumbs search={search} />
@@ -146,11 +139,8 @@ export default function Catalog(props) {
                         }
                     })}
                 </ul>
-                <Route path='/hola'>
-                    {detailsActive ? <DetailsPublication publication={publication[0 ]}/> : null}
-                </Route>
+                {detailsActive ? <DetailsPublication publication={publication[0 ]}/> : null}
                 {notResult ? <h1>Sin Resultados</h1> :null}
-                </Router>
             </div>
         </main>
     )

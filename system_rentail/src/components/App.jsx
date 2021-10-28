@@ -1,21 +1,24 @@
 import React from 'react';
+import '../styles/app.sass'
+import Catalog from './Catalog';
+import NotFound from './NotFound'
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import '../styles/app.sass'
-import Catalog from './Catalog';
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Route path="/catalog">
-          <Catalog />
-        </Route>
-      </Router>
+    <Router>
+      <Switch>
+        <Route path="/catalog" component={Catalog} />
+        <Route path="" component={NotFound} />
+      </Switch>
+    </Router> 
     </div>
   );
 }
