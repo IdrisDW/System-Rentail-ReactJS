@@ -17,7 +17,7 @@ export function Card(props) {
             </div>
             <div className="card-actions">
             <ButtonRent />
-            <a href="">Ver mas Opciones</a>
+            <a href="/#">Ver mas Opciones</a>
         </div>
     </div>
     )

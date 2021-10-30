@@ -4,6 +4,14 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import  ButtonEdit  from "./Buttons";
 
+ 
+import Button from '@mui/material/Button';
+ 
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
+ 
+import TextField from '@mui/material/TextField';
+
 export default function FormPersonalData(props) {
 
     const [ editData, setEditData ] = React.useState({})
@@ -33,26 +41,26 @@ export default function FormPersonalData(props) {
         <div className="container-p">
          
         <div className="form-p"><h2>Editar Perfil</h2></div>
-        {/* <form> */}
+         <form>  
           <div className="form-gp">
             <label hname="nameP">Nombre</label>
             <input
               type="text"
               name="username"
               className="slabel"
-              placeholder="Name"
-              value={props.userData.username}
+              placeholder="Nombre"
+              value={props.userData.firstname}
             />
           </div>
     
-          {/* <div className="form-gp">
+         <div className="form-gp">
             <label lname="lastnameP">Apellido</label>
             <input
               type="text"
               name="lastnameP"
               className="slabel"
               placeholder="Apellido"
-              value=""
+              value={props.userData.lastname}
             />
           </div>
     
@@ -63,9 +71,9 @@ export default function FormPersonalData(props) {
               name="emailP"
               className="slabel"
               placeholder="Correo"
-              value=""
+              value={props.userData.email}
             />
-          </div> */}
+          </div> 
     
           <div className="form-gp">
             <label uname="usernameP">Username</label>
@@ -74,31 +82,53 @@ export default function FormPersonalData(props) {
               name="usernameP"
               className="slabel"
               placeholder="Username"
-              value={editData.username}
+            //  value={editData.username}
+            value={props.userData.username}
               onChange={handleChange}
             />
           </div>
     
-          {/* <div className="form-gp">
+          <div className="form-gp">
             <label pword="passwordP">Password</label>
             <input
               type="password"
               name="passwordP"
               className="slabel"
               placeholder="Password"
-              value=""
+              value={props.userData.password}
             />
-          </div> */}
-            <Box sx={{ '& > :not(style)': { m: 1 } }}>
+          </div> 
+
+          <div className="form-gp">
+            <label pword="passwordP">Password</label>
+            <input
+              type="password"
+              name="passwordP"
+              className="slabel"
+              placeholder="Password"
+              value={props.userData.password}
+            />
+          </div> 
+          <Box sx={{ '& button': { m: 1 } }}>
+
+          <Button variant="outlined" size="medium">
+         Editar
+        </Button>
+
+</Box>
+          <Button variant="contained" endIcon={<SendIcon />}>
+       Guardar
+      </Button>
+            {/* <Box sx={{ '& > :not(style)': { m: 1 } }}>
                 <Fab color="secondary" aria-label="add">
                   <AddIcon 
                   onClick={handleClick}/>
                 </Fab>
-            </Box>
-          {/* <ButtonEdit
+            </Box> */}
+            {/* <ButtonEdit
           onClick={handleClick}
-          /> */}
-        {/* </form> */}
+          />  */}
+        </form>  
       </div>
     )
 
