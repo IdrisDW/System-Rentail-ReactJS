@@ -38,98 +38,59 @@ export default function FormPersonalData(props) {
     }
 
     return (
-        <div className="container-p">
-         
-        <div className="form-p"><h2>Editar Perfil</h2></div>
-         <form>  
-          <div className="form-gp">
-            <label hname="nameP">Nombre</label>
-            <input
-              type="text"
-              name="username"
-              className="slabel"
-              placeholder="Nombre"
-              value={props.userData.firstname}
-            />
-          </div>
-    
-         <div className="form-gp">
-            <label lname="lastnameP">Apellido</label>
-            <input
-              type="text"
-              name="lastnameP"
-              className="slabel"
-              placeholder="Apellido"
-              value={props.userData.lastname}
-            />
-          </div>
-    
-          <div className="form-gp">
-            <label email="emailP">Correo</label>
-            <input
-              type="email"
-              name="emailP"
-              className="slabel"
-              placeholder="Correo"
-              value={props.userData.email}
-            />
-          </div> 
-    
-          <div className="form-gp">
-            <label uname="usernameP">Username</label>
-            <input
-              type="text"
-              name="usernameP"
-              className="slabel"
-              placeholder="Username"
-            //  value={editData.username}
-            value={props.userData.username}
-              onChange={handleChange}
-            />
-          </div>
-    
-          <div className="form-gp">
-            <label pword="passwordP">Password</label>
-            <input
-              type="password"
-              name="passwordP"
-              className="slabel"
-              placeholder="Password"
-              value={props.userData.password}
-            />
-          </div> 
-
-          <div className="form-gp">
-            <label pword="passwordP">Password</label>
-            <input
-              type="password"
-              name="passwordP"
-              className="slabel"
-              placeholder="Password"
-              value={props.userData.password}
-            />
-          </div> 
-          <Box sx={{ '& button': { m: 1 } }}>
-
-          <Button variant="outlined" size="medium">
-         Editar
-        </Button>
-
-</Box>
-          <Button variant="contained" endIcon={<SendIcon />}>
-       Guardar
-      </Button>
-            {/* <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <Fab color="secondary" aria-label="add">
-                  <AddIcon 
-                  onClick={handleClick}/>
-                </Fab>
-            </Box> */}
-            {/* <ButtonEdit
-          onClick={handleClick}
-          />  */}
-        </form>  
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div>
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          value={props.userData.firstname}
+        />
+        <TextField
+          disabled
+          id="outlined-disabled"
+          label="Disabled"
+          defaultValue="Hello World"
+        />
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+        />
+        <TextField
+          id="outlined-read-only-input"
+          label="Read Only"
+          defaultValue="Hello World"
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          id="outlined-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField id="outlined-search" label="Search field" type="search" />
+        <TextField
+          id="outlined-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
+        />
       </div>
+
+      </Box>
     )
 
 }
