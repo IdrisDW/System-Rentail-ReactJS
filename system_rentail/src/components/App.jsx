@@ -1,6 +1,6 @@
 import '../styles/app.sass'
 import { Header } from './Header'
-import { PersonalData } from './PersonalData'
+import  PersonalData   from './PersonalData'
 import Catalog from './Catalog';
  
 import { Login } from './Login'
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <PersonalData />
-      {/* <Catalog /> */}
+     
     </div>
   );
 }
