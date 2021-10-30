@@ -4,6 +4,7 @@ import PrimarySearchAppBar from './PrimarySearchAppBar'
 import Catalog from './Catalog';
 import DetailsPublication from './DetailsPublication';
 import NotFound from './NotFound'
+import PersonalData from './PersonalData'
 
 import {
   BrowserRouter as Router,
@@ -57,7 +58,8 @@ function App() {
 
   return (
     <div className="App">
-      <PrimarySearchAppBar searchPublications={searchPublications}/>
+      <PersonalData />
+      {/* <PrimarySearchAppBar searchPublications={searchPublications}/>
       <Router>
         <Switch>
           <Route exact path="/catalog" component={Catalog} />
@@ -70,7 +72,7 @@ function App() {
           </Route>
           <Route path="" component={NotFound} />
         </Switch>
-      </Router> 
+      </Router>  */}
     </div>
   );
 }

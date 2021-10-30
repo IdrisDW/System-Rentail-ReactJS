@@ -1,5 +1,4 @@
 import React from 'react';
-import Stack from '@mui/material/Stack';
 import '../styles/buttons.sass';
 
 export function ButtonRent() {
@@ -15,6 +14,12 @@ export function ButtonApply() {
 }
 
 export function ButtonFilter() {
+    return (
+        <button className="btn-filter-desktop">Filtrar</button>
+    )
+}
+
+export function ButtonEdit() {
     return (
         <button className="btn-filter-desktop">Filtrar</button>
     )
