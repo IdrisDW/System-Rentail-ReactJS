@@ -3,7 +3,14 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import  ButtonEdit  from "./Buttons";
-
+import { 
+  Checkbox,
+  Grid,
+   
+  FormControlLabel,
+  Paper 
+   }
+  from '@material-ui/core';
  
 import Button from '@mui/material/Button';
  
@@ -38,59 +45,42 @@ export default function FormPersonalData(props) {
     }
 
     return (
-      <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          value={props.userData.firstname}
-        />
-        <TextField
-          disabled
-          id="outlined-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-        />
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField id="outlined-search" label="Search field" type="search" />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-        />
-      </div>
-
-      </Box>
-    )
-
+      <div style={{ padding: 30 }}>
+      <Paper>
+        <Grid
+          container
+          spacing={3}
+          direction={'column'}
+          justify={'center'}
+          alignItems={'center'}
+        >
+          <Grid item xs={12}>
+            <TextField label="Username"></TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField label="Password" type={'password'}></TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  // checked={checked}
+                  onChange={handleChange}
+                  label={'Keep me logged in'}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+              }
+              label="Keep me logged in"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button fullWidth> Login </Button>
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
+  );
+ 
+    
+      
 }
