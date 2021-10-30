@@ -28,6 +28,13 @@ export default function FormPersonalData(props) {
         editData[e.target.name] = e.target.value;
     }
 
+    const handleButtonEditar = (e) => {
+console.log("hola buton");
+      // e.preventDefault();
+      // textfield.disabled={false}
+    }
+ 
+
     const handleClick = async (e) => {
         e.preventDefault()
         try {
@@ -54,12 +61,57 @@ export default function FormPersonalData(props) {
           justify={'center'}
           alignItems={'center'}
         >
+
+{/* InputLabelProps={{ shrink: true }} */}
           <Grid item xs={12}>
-            <TextField label="Username"></TextField>
+            <TextField label="Nombre" 
+               disabled={true}
+                 value={props.userData.firstname || ''}
+            >
+            </TextField>
           </Grid>
+
           <Grid item xs={12}>
-            <TextField label="Password" type={'password'}></TextField>
+            <TextField label="Apellido"
+             disabled={true}
+                 value={props.userData.lastname || ''}
+            >
+            </TextField>
           </Grid>
+
+          <Grid item xs={12}>
+          
+            <TextField label="Correo" disabled={true}
+                 value={props.userData.email || ''}
+            >
+            </TextField>
+          </Grid>
+
+          <Grid item xs={12}>
+          
+            <TextField label="Username" disabled={true}
+                 value={props.userData.username || ''}
+            >
+            </TextField>
+          </Grid>
+
+          <Grid item xs={12}>
+          
+            <TextField label="Contraseña actual" disabled={true}
+                value={props.userData.password|| ''}
+            type={'password'}></TextField>
+          </Grid>
+
+          <Grid item xs={12}>
+ 
+            <TextField label="Contraseña nueva" disabled={true}
+                value={props.userData.password || ''}
+            type={'password'}></TextField>
+          </Grid>
+
+
+
+{/* 
           <Grid item xs={12}>
             <FormControlLabel
               control={
@@ -72,10 +124,19 @@ export default function FormPersonalData(props) {
               }
               label="Keep me logged in"
             />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
-            <Button fullWidth> Login </Button>
+          <Stack spacing={2} direction="row">
+          <Button variant="outlined" 
+          
+          onClick={(e) => this.doSomethingWithInput(e)}
+          >Editar</Button>
+          <Button variant="outlined">Aplicar</Button>
+            {/* <Button fullWidth> Login </Button> */}
+            </Stack>
           </Grid>
+
+         
         </Grid>
       </Paper>
     </div>
