@@ -1,36 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import ToolsCatalog from './ToolsCatalog'
-import DetailsPublication from './DetailsPublication';
+import SimpleBackdrop from './SimpleBackdrop'
+import BasicBreadcrumbs from './BasicBreadcrumbs'
 import '../styles/catalog.sass'
 import { Card } from './Card'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 export default function Catalog(props) {
 
-    const [ catalogActive, setCatalogActive ] = useState(true);
-    const [ detailsActive, setDetailsActive ] = useState(false);
-    // const [ publications, setPublications ] = useState([]);
-    const [ publication, setPublication] = useState({})
+    const [ publications, setPublications ] = useState([]);
     const [ loading, setLoading ] = useState(null);
     const [ notResult, setNotResult ] = useState(null);
     const [ search, setSearch ] = useState(null)
 
-    // useEffect(() => {
-    //     const getPublications = async (url) => {
-    //         setLoading(true)
-    //         const request = await fetch(url)
-    //         const jsonRequest = await request.json()
-    //         if (jsonRequest.length > 0) {
-    //             setLoading(false)
-    //             setPublications(jsonRequest)
-    //             setNotResult(false)
-    //         } else {
-    //             setNotResult(true)
-    //         }
-    //     }
+    useEffect(() => {
+        const getPublications = async (url) => {
+            setLoading(true)
+            try {
+                const request = await fetch(url)
+                const jsonRequest = await request.json()
+                if (jsonRequest.length > 0) {
+                    setLoading(false)
+                    setPublications(jsonRequest)
+                    setNotResult(false)
+                } else {
+                    setNotResult(true)
+                }
+            } catch (err) {
+                setNotResult(true)
+            }
+        }
 
-    //     getPublications(props.url)
+        console.log(props.match);
 
-    // },[])
+        let url = "https://income-system.herokuapp.com/publications"
+        if(props.match.params.title){
+            url += "?title=" + props.match.params.title
+            setSearch(props.match.params.title)
+        } else if(props.match.params.category){
+            url += "?category=" + props.match.params.title
+            setSearch(props.match.params.category)
+        } else if(props.match.params.sector){
+            url += "?sector=" + props.match.params.title
+            setSearch(props.match.params.sector)
+        }
+
+        getPublications(url)
+
+    },[])
 
     // const searchPublications = async (url_search, search) => {
     //     setLoading(true)
@@ -123,18 +146,20 @@ export default function Catalog(props) {
     // }
 
     return (
+        <>
+        <BasicBreadcrumbs search={search} />
+        {loading ? <SimpleBackdrop loading={true} />: null}
         <main className="body-catalog">
             <div className="catalog">
                 <ToolsCatalog searchPublications={props.searchPublications} />
                 <ul>
-                    {props.publications.length > 0 ? props.publications.map(publication => {
-                        if (catalogActive) {
+                    {publications.length > 0 ? publications.map(publication => {
                             return <li key={publication._id}><Card publication={publication}/></li>
-                        }
                     }): <h1>Sin Resultados</h1>}
                 </ul>
             </div>
         </main>
+        </>
     )
 
 }

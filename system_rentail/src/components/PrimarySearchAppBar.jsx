@@ -18,6 +18,12 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Button from '@mui/material/Button';
 import { Header } from './Header'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -90,8 +96,9 @@ export default function PrimarySearchAppBar(props) {
   }
 
   const handleClick = (event) => {
-    const urlNew = 'https://income-system.herokuapp.com/publications?title=' + searchText
-    props.searchPublications(urlNew, 'Busqueda: ' + searchText);
+    const urlNew = '/catalog_search=/' + searchText
+    // props.searchPublications(urlNew, 'Busqueda: ' + searchText);
+    window.location.href = urlNew;
   }
 
   const menuId = 'primary-search-account-menu';
@@ -169,6 +176,7 @@ export default function PrimarySearchAppBar(props) {
   );
 
   return (
+    <Router>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{backgroundColor: '#153E90'}}>
         <Toolbar>
@@ -200,6 +208,7 @@ export default function PrimarySearchAppBar(props) {
               name="search"
             />
           </Search>
+          <Link to="/catalog">oki</Link>
           <Button className="btn-search"name="search" onClick={handleClick} className="search-btn" variant="contained">Buscar</Button>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -247,5 +256,6 @@ export default function PrimarySearchAppBar(props) {
       {renderMobileMenu}
       {renderMenu}
     </Box>
+    </Router>
   );
 }
