@@ -18,23 +18,46 @@ import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
  
 import TextField from '@mui/material/TextField';
-
+import {useRef} from 'react';
 export default function FormPersonalData(props) {
-
+  //this.myContainer = React.createRef()
     const [ editData, setEditData ] = React.useState({})
-
-
+    const itemsRef = useRef([]);
+   // let [isDisabled, setIsDisabled] = React.useState(false)
+  //  const  setIsDisabled = (e)=>{
+  //   // document.getElementById('division').children[0].disabled=false;
+  //   console.log(document.getElementById('division'));
+  //   }
+ 
     const handleChange = (e) => {
         editData[e.target.name] = e.target.value;
     }
+    // const handleChange = e => {
+    //   setValue(e.target.value);
+    // };
+  
+      
 
-    const handleButtonEditar = (e) => {
-console.log("hola buton");
-      // e.preventDefault();
-      // textfield.disabled={false}
-    }
- 
+    // until here
 
+    // function Menu(props) {
+    //   React.useEffect(() => {
+    //     document.getElementById('division').children[0].disabled=false;
+       
+    
+    //   }, [])
+    // }
+
+//
+//     const handleButtonEditar =  (e) => {
+//     //  e.preventDefault();
+// // console.log("hola buton");
+//       // e.preventDefault();
+//       // textfield.disabled={false}
+
+//    //   console.log(document.getElementById('division'));
+//     }
+     
     const handleClick = async (e) => {
         e.preventDefault()
         try {
@@ -51,8 +74,13 @@ console.log("hola buton");
         } 
     }
 
+    
     return (
-      <div style={{ padding: 30 }}>
+
+      
+      <div   name="division" style={{ padding: 30 }}>
+
+
       <Paper>
         <Grid
           container
@@ -104,7 +132,7 @@ console.log("hola buton");
 
           <Grid item xs={12}>
  
-            <TextField label="Contraseña nueva" disabled={true}
+            <TextField  label="Contraseña nueva" disabled={true}
                 value={props.userData.password || ''}
             type={'password'}></TextField>
           </Grid>
@@ -128,9 +156,12 @@ console.log("hola buton");
           <Grid item xs={12}>
           <Stack spacing={2} direction="row">
           <Button variant="outlined" 
-          
-          onClick={(e) => this.doSomethingWithInput(e)}
-          >Editar</Button>
+         
+          onClick={() => this.Menu()}
+      //    onClick={()=>   setisdis()}
+          // disabled={true} 
+          >
+            Editar</Button>
           <Button variant="outlined">Aplicar</Button>
             {/* <Button fullWidth> Login </Button> */}
             </Stack>
@@ -139,9 +170,12 @@ console.log("hola buton");
          
         </Grid>
       </Paper>
+
     </div>
+
+ 
   );
  
     
-      
+   
 }
