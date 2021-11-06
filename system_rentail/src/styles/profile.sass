@@ -1,3 +1,5 @@
+@import './variables.sass'
+
 .box-profile
     width: 90%
     padding: 5%
@@ -6,13 +8,57 @@
     justify-content: center
     align-items: center
     font-family: Arial, "Helvetica"
-    
+
+.data-profile
+    width: 100%
+    margin: 0 auto
+    display: grid
+    grid-template-columns: repeat(1, 1fr)
+    justify-content: center
+    align-items: center
+    gap: 5%
+
+
+@media (max-width: $small)
+    .box-profile
+        width: 85%
+        padding: 5%
+        
+    .data-profile
+        width: 90%
+        margin: 0 auto
+        gap: 5% 
+ 
+@media (max-width: $medium) and (min-width: $small + 1px)
+    .box-profile
+        width: 90%
+        padding: 5%
+       
+
+    .data-profile
+        width: 95%
+        margin: 0 auto
+        gap: 5% 
+
+@media (max-width: $medium-large) and (min-width: $medium + 1px)
+    .box-profile
+        width: 98%
+        padding: 5%
+        display: grid
+        
+
+    .data-profile
+        width: 98%
+        margin: 0 auto
+        gap: 5% 
+
+@media (max-width: $large) and (min-width: $medium-large + 1px)
+    .box-profile
+        width: 90%
+        padding: 5%
+        
+
     .data-profile
         width: 100%
         margin: 0 auto
-        display: grid
-        grid-template-columns: repeat(1, 1fr)
-        justify-content: center
-        align-items: center
-        gap: 5%
-
+        gap: 5% 
