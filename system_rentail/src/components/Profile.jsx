@@ -15,6 +15,9 @@ import Stack from '@mui/material/Stack';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import FormControl from '@mui/material/FormControl';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
 import '../styles/profile.sass'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -161,6 +164,16 @@ export default function Profile(props) {
     return (
         <>
         {loading ? <SimpleBackdrop loading={true} />: null}
+        <div className="box-profile2">
+        <Breadcrumbs aria-label="breadcrumb">
+  <Link underline="hover" color="inherit" href="/">
+   Home
+  </Link>
+  
+  <Typography color="text.primary">Editar perfil</Typography>
+</Breadcrumbs>
+</div>
+
         <div className="box-profile">
             <figure>
                 <Avatar sx={{ fontSize: '2em', width: '150px', height: '150px', bgcolor: deepPurple[500] }}>
